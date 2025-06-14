@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Name Validation Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f4f8;
+      padding: 20px;
+    }
+    .container {
+      max-width: 400px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    .error {
+      color: red;
+      font-size: 14px;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Senior Junior</h2>
+    <form id="nameForm">
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" name="firstName">
+      <div id="firstError" class="error"></div>
+
+      <label for="secondName">Second Name:</label>
+      <input type="text" id="secondName" name="secondName">
+      <div id="secondError" class="error"></div>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('nameForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const firstName = document.getElementById('firstName').value.trim();
+      const secondName = document.getElementById('secondName').value.trim();
+
+      const firstError = document.getElementById('firstError');
+      const secondError = document.getElementById('secondError');
+
+      let isValid = true;
+
+      // Clear errors
+      firstError.textContent = '';
+      secondError.textContent = '';
+
+      if (firstName !== 'Gowtham') {
+        firstError.textContent = 'First name must be "Gowtham".';
+        isValid = false;
+      }
+
+      if (secondName !== 'Innisa') {
+        secondError.textContent = 'Second name must be "Innisa".';
+        isValid = false;
+      }
+
+      if (isValid) {
+        // Redirect to success page
+        window.location.href = 'success.html'; // You can change this to your desired page
+      }
+    });
+  </script>
+
+</body>
+</html>
